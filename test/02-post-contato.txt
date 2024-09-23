@@ -1,0 +1,7 @@
+POST http://localhost:3031/contato
+{
+  "nome": "Contato",
+  "telefone": "+99 (99) 9 9999-9999",
+  "email": "a@b.c",
+  "endereco": ""
+}
