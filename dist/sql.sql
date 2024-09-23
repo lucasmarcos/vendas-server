@@ -9,5 +9,8 @@ CREATE TABLE IF NOT EXISTS usuario (
 
 CREATE TABLE IF NOT EXISTS contato (
   id INTEGER PRIMARY KEY,
-  nome TEXT
+  nome TEXT,
+  telefone TEXT,
+  email TEXT,
+  endereco TEXT
 );
