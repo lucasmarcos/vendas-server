@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { env } from "node:process";
 import { serve } from "@hono/node-server";
 import Database from "better-sqlite3";
 import { Hono } from "hono";
@@ -12,11 +13,14 @@ db.exec(sql);
 
 const app = new Hono();
 
+const PORT = Number.parseInt(env.PORT) || 3031;
+const HOSTNAME = env.HOSTNAME || "localhost";
+
 serve(
   {
     fetch: app.fetch,
-    port: 3031,
-    hostname: "0.0.0.0",
+    port: PORT,
+    hostname: HOSTNAME,
   },
   console.log,
 );
