@@ -12,6 +12,7 @@
   "scripts": {
     "build": "tsc",
     "run": "node ./dist/main.js",
+    "lint": "biome check --write",
     "watch:tsc": "tsc --watch",
     "watch:node": "node --watch ./dist/main.js"
   }
