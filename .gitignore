@@ -2,3 +2,5 @@
 /dist/*
 !/dist/sql.sql
 /db.db
+/db.db-shm
+/db.db-wal
