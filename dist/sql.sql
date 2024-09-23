@@ -1,1 +1,8 @@
 PRAGMA journal_mode=WAL;
+
+CREATE TABLE IF NOT EXISTS usuario (
+  id INTEGER PRIMARY KEY,
+  email TEXT NOT NULL,
+  senha TEXT NOT NULL,
+  nome TEXT NOT NULL
+);
