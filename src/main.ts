@@ -37,6 +37,26 @@ app.post("/usuarios", async (ctx) => {
   return ctx.json(res);
 });
 
+app.get("/contatos", async (ctx) => {
+  const sttm = db.prepare(
+    "SELECT id, nome, telefone, email, endereco FROM contato;",
+  );
+  const res = sttm.all();
+  return ctx.json(res);
+});
+
+app.post("/contato", async (ctx) => {
+  const { nome, telefone, email, endereco } = await ctx.req.json();
+
+  const sttm = db.prepare(
+    "INSERT INTO contato (nome, telefone, email, endereco) VALUES (?, ?, ?, ?);",
+  );
+
+  const res = sttm.run(nome, telefone, email, endereco);
+
+  return ctx.json({ id: res.lastInsertRowid });
+});
+
 const PORT = Number.parseInt(env.PORT) || 3031;
 const HOSTNAME = env.HOSTNAME || "localhost";
 
