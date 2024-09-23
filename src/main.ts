@@ -13,6 +13,13 @@ db.exec(sql);
 
 const app = new Hono();
 
+app.post("/login", async (ctx) => {
+  const { email, senha } = await ctx.req.json();
+  const sttm = db.prepare("SELECT id FROM usuario WHERE email = ? AND senha = ?;");
+  const res = sttm.get(email, senha) as any;
+  return ctx.json({ id: res.id });
+});
+
 const PORT = Number.parseInt(env.PORT) || 3031;
 const HOSTNAME = env.HOSTNAME || "localhost";
 
